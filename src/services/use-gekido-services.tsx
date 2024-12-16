@@ -1,11 +1,5 @@
 import { supabase } from "../services/supabase-client";
 
-interface UseGekidoService {
-  loginStudent: (ci: string) => Promise<any>;
-  // assingStudentGiveten: (params: { id: number }) => Promise<any>;
-  //chargeData: () => void;
-}
-
 function useGekidoService(): any {
   async function loginStudent(ci: string) {
     const { data, error } = await supabase
@@ -83,7 +77,6 @@ function useGekidoService(): any {
   }
 
   async function getStudenData(student: Gekido.Student) {
-    console.log(`<<< data >>>`, student);
     const { data, error } = await supabase
       .from("student")
       .select("*")
@@ -94,35 +87,10 @@ function useGekidoService(): any {
     return { status: "1000", data: data[0] };
   }
 
-  /*
-  async function chargeData() {
-    await supabase.from("student").delete().neq("id", 0);
-
-    await supabase.from("student").insert([
-      { ci: "32021801", photo: "", name: "Valery" },
-      { ci: "30230621", photo: "", name: "Oscar" },
-      { ci: "30547556", photo: "", name: "Ana Maria" },
-      { ci: "30707256", photo: "", name: "Miguel" },
-      { ci: "30707371", photo: "", name: "Nicolas" },
-      { ci: "31241126", photo: "", name: "Nazaret" },
-      { ci: "31402843", photo: "", name: "Verónica" },
-      { ci: "31803564", photo: "", name: "Nicolle" },
-      { ci: "27650751", photo: "", name: "Andres" },
-      { ci: "29515246", photo: "", name: "Eliezer" },
-      { ci: "34162966", photo: "", name: "Alejandro" },
-      { ci: "27825051", photo: "", name: "Deia" },
-      { ci: "25578865", photo: "", name: "Silvestre" },
-      { ci: "27547128", photo: "", name: "Juan Simon" },
-    ]);
-  }
-  */
-
   return {
     loginStudent,
     assingGivenTo,
     getStudenData,
-    //chargeData,
-    // assingStudentGiveten
   };
 }
 
