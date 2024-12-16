@@ -85,7 +85,7 @@ const Card = (props: { student: Gekido.Student | null }) => {
   return (
     <article className="p-8">
       <div className="w-[200px] h-[300px] flex items-center">
-        <div className="min-h-[200px] border border-red-100">
+        <div className="p-2 min-h-[200px] rounded border border-gray-300">
           <img
             src={
               photo
