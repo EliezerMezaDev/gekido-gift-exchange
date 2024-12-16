@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 const Home = () => {
   const navigate = useNavigate();
   const { assingGivenTo, getStudenData } = useGekidoService();
-  const { getStudentData } = useContext(
+  const { getStudentInfo, setStudentInfo } = useContext(
     GekidoContext
   ) as Gekido.GekidoContextType;
 
@@ -15,7 +15,7 @@ const Home = () => {
   const [toGive, setToGive] = useState<Gekido.Student | null>(null);
 
   const checkData = async () => {
-    const { data } = getStudentData();
+    const { data } = getStudentInfo();
     setStudent(data);
 
     if (!data) {
@@ -24,10 +24,16 @@ const Home = () => {
       return;
     }
 
-    const toGive =
-      data.gives_to === ""
-        ? await assingGivenTo(data)
-        : await getStudenData(data);
+    let toGive;
+
+    if (data.gives_to === "") {
+      toGive = await assingGivenTo(data);
+
+      if (toGive.status === "1000")
+        setStudentInfo({ ...data, gives_to: toGive.id });
+    } else {
+      toGive = await getStudenData(data);
+    }
 
     if (toGive.status === "1000") {
       setToGive(toGive.data);

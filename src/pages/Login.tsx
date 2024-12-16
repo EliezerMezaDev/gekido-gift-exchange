@@ -11,7 +11,7 @@ type error = {
 
 const Login = () => {
   const navigate = useNavigate();
-  const { setStudentData } = useContext(
+  const { setStudentInfo } = useContext(
     GekidoContext
   ) as Gekido.GekidoContextType;
 
@@ -36,8 +36,6 @@ const Login = () => {
 
     const res = await loginStudent(identifier);
 
-    console.log(`<<< res >>>`, res);
-
     if (res.code === "0000") {
       setErrors([
         {
@@ -60,7 +58,7 @@ const Login = () => {
       return;
     }
 
-    setStudentData(res);
+    setStudentInfo(res);
 
     navigate("/home");
   };

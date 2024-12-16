@@ -1,7 +1,7 @@
 declare namespace Gekido {
   type GekidoContextType = {
-    getStudentData: () => ContextStudent;
-    setStudentData: (student: Student) => void;
+    getStudentInfo: () => ContextStudent;
+    setStudentInfo: (student: Student) => void;
   };
 
   interface ContextStudent {

@@ -9,16 +9,16 @@ import Home from "./pages/Home";
 function App() {
   const [student, setStudent] = useState<any>({});
 
-  const getStudentData = () => {
+  const getStudentInfo = () => {
     return student;
   };
 
-  const setStudentData = (student: Gekido.Student) => {
+  const setStudentInfo = (student: Gekido.Student) => {
     setStudent(student);
   };
 
   return (
-    <GekidoContext.Provider value={{ getStudentData, setStudentData }}>
+    <GekidoContext.Provider value={{ getStudentInfo, setStudentInfo }}>
       <BrowserRouter>
         <Routes>
           <Route path="/">
