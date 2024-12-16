@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 const Home = () => {
   const navigate = useNavigate();
   const { assingGivenTo, getStudenData } = useGekidoService();
-  const { getStudentData, setStudentData } = useContext(
+  const { getStudentData } = useContext(
     GekidoContext
   ) as Gekido.GekidoContextType;
 
