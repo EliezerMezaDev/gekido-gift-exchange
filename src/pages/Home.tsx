@@ -37,8 +37,6 @@ const Home = () => {
   const backLogin = (event: any) => {
     event.preventDefault();
 
-    setStudentData(null);
-
     navigate("/");
   };
 
